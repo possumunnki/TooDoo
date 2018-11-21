@@ -19,7 +19,9 @@ export default class TaskCalendar extends React.Component{
           theme={{
             selectedDayBackgroundColor: 'orange',
             selectedDayTextColor: '#ffffff',
-          }} />
+          }} 
+        />
+        
       </View> 
     )
   }

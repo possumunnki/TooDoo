@@ -1,5 +1,5 @@
 import React from 'react';
-import Icon from "react-native-vector-icons/Ionicons"
+import Icon from "react-native-vector-icons/FontAwesome"
 import {createBottomTabNavigator,createAppContainer } from 'react-navigation'
 import CalendarScreen from './components/calendarScreen/CalendarScreen.js'
 import TaskListScreen from './components/taskListScreen/TaskListScreen.js'
@@ -11,7 +11,7 @@ const TabNavigator = createBottomTabNavigator({
     navigationOptions: () => ({
       tabBarIcon: ({tintColor}) => (
         <Icon
-          name="ios-contacts"
+          name="calendar"
           color={tintColor}
           size={25}
         />
@@ -23,7 +23,7 @@ const TabNavigator = createBottomTabNavigator({
     navigationOptions: () => ({
       tabBarIcon: ({tintColor}) => (
         <Icon
-          name="ios-contacts"
+          name="list"
           color={tintColor}
           size={25}
         />
@@ -35,7 +35,7 @@ const TabNavigator = createBottomTabNavigator({
     navigationOptions: () => ({
       tabBarIcon:({tintColor}) => (
         <Icon
-        name="ios-add"
+        name="plus"
         color={tintColor}
         size={25}
       />
