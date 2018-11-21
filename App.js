@@ -1,21 +1,47 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import Icon from "react-native-vector-icons/Ionicons"
+import {createBottomTabNavigator,createAppContainer } from 'react-navigation'
+import CalendarScreen from './components/calendarScreen/CalendarScreen.js'
+import TaskListScreen from './components/taskListScreen/TaskListScreen.js'
+import AddTaskScreen from './components/addTaskScreen/AddTaskScreen.js'
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Hello agin, React native</Text>
-      </View>
-    );
-  }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+const TabNavigator = createBottomTabNavigator({
+  Calendar: {
+    screen: CalendarScreen,
+    navigationOptions: () => ({
+      tabBarIcon: ({tintColor}) => (
+        <Icon
+          name="ios-contacts"
+          color={tintColor}
+          size={25}
+        />
+      )
+  })
   },
+  TaskList: {
+    screen:  TaskListScreen,
+    navigationOptions: () => ({
+      tabBarIcon: ({tintColor}) => (
+        <Icon
+          name="ios-contacts"
+          color={tintColor}
+          size={25}
+        />
+      )
+  })
+  },
+  AddTask: {
+    screen: AddTaskScreen,
+    navigationOptions: () => ({
+      tabBarIcon:({tintColor}) => (
+        <Icon
+        name="ios-add"
+        color={tintColor}
+        size={25}
+      />
+      )
+    })
+  }
 });
+
+export default createAppContainer(TabNavigator);
