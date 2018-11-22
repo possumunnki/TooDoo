@@ -18,7 +18,7 @@ const TabNavigator = createBottomTabNavigator({
       )
   })
   },
-  TaskList: {
+  Tasks: {
     screen:  TaskListScreen,
     navigationOptions: () => ({
       tabBarIcon: ({tintColor}) => (
@@ -30,7 +30,7 @@ const TabNavigator = createBottomTabNavigator({
       )
   })
   },
-  AddTask: {
+  Add: {
     screen: AddTaskScreen,
     navigationOptions: () => ({
       tabBarIcon:({tintColor}) => (

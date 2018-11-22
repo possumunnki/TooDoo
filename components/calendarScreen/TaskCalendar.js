@@ -1,19 +1,7 @@
 import React from 'react'
 import {StyleSheet, Text, View} from 'react-native'
 import {Calendar} from 'react-native-calendars'
-
-
-function formatDate() {
-  var d = new Date(),
-      month = '' + (d.getMonth() + 1),
-      day = '' + d.getDate(),
-      year = d.getFullYear();
-
-  if (month.length < 2) month = '0' + month;
-  if (day.length < 2) day = '0' + day;
-
-  return [year, month, day].join('-');
-}
+import {getToday} from '../utility/DateTime'
 
 export default class TaskCalendar extends React.Component{
     constructor(props) {
@@ -21,7 +9,7 @@ export default class TaskCalendar extends React.Component{
     }
 
   render() {
-    var today = formatDate()
+    var today = getToday()
 
     return(
       <View style = {styles.container}>
