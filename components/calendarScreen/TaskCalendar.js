@@ -15,7 +15,6 @@ function formatDate() {
   return [year, month, day].join('-');
 }
 
-
 export default class TaskCalendar extends React.Component{
     constructor(props) {
       super(props)
@@ -24,7 +23,6 @@ export default class TaskCalendar extends React.Component{
   render() {
     var today = formatDate()
 
-    console.log('Today: ', today.toString())
     return(
       <View style = {styles.container}>
         <Calendar

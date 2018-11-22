@@ -1,6 +1,6 @@
 import React from 'react'
 import {StyleSheet, Text, View} from 'react-native'
-import { Constants } from 'expo';
+import { Constants } from 'expo'
 import TaskCalendar from './TaskCalendar.js'
 import TodaysTask from './TodysTask.js'
 

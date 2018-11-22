@@ -35,10 +35,10 @@ const TabNavigator = createBottomTabNavigator({
     navigationOptions: () => ({
       tabBarIcon:({tintColor}) => (
         <Icon
-        name="plus"
-        color={tintColor}
-        size={25}
-      />
+          name="plus"
+          color={tintColor}
+          size={25}
+        />
       )
     })
   }
