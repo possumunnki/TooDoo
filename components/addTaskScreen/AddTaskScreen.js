@@ -1,15 +1,32 @@
 import React from 'react'
-import {StyleSheet, Text, View, TextInput} from 'react-native'
 import { Constants } from 'expo'
+import {StyleSheet, Text, View, TextInput} from 'react-native'
 import DatePicker from 'react-native-datepicker'
-import {getToday} from '../utility/DateTime'
 import CreateButton from './CreateButon.js'
+import {getToday} from '../utility/DateTime'
+import {storeTask} from '../utility/TaskStorage'
+import TaskData from '../utility/TaskData.js'
 
 export default class AddTaskScreen extends React.Component{
   constructor(props) {
     super(props)
     this.today = getToday()
-    this.state = {startDate : this.today, endDate: this.today, taskTitle: ''}
+    this.createTask = this.createTask.bind(this)
+    this.state = {
+      startDate : this.today,
+      endDate: this.today,
+      taskTitle: ''}
+  }
+
+  createTask() {
+    title = this.state.taskTitle
+    startDate = this.state.startDate
+    endDate = this.state.endDate
+    if(title != '') {
+      let data = new TaskData(title, startDate, endDate)
+      storeTask(JSON.stringify(data))
+      this.textInput.clear()
+    }
   }
 
   render() {
@@ -17,6 +34,7 @@ export default class AddTaskScreen extends React.Component{
       <View style = {styles.container}>
 
         <TextInput
+          ref = {input => {this.textInput = input}}
           style = {styles.titleInput}
           onChangeText={(title)=>this.setState({taskTitle: title})}
           placeholder='Name of the task'
@@ -73,7 +91,7 @@ export default class AddTaskScreen extends React.Component{
         </View>
         <CreateButton
           clicked = {() => {
-
+            this.createTask()
           }}
         />
       </View>

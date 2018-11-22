@@ -1,6 +1,7 @@
 import React from 'react'
-import {StyleSheet, Text, View} from 'react-native'
+import {StyleSheet, View} from 'react-native'
 import { Constants } from 'expo'
+import TaskList from './TaskList'
 
 export default class TaskListScreen extends React.Component{
   constructor(props) {
@@ -10,7 +11,8 @@ export default class TaskListScreen extends React.Component{
   render() {
     return(
       <View style = {styles.container}>
-        <Text>Hello, this is task list</Text>
+        <TaskList/>
+        
       </View> 
     )
   }
