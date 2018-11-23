@@ -15,7 +15,7 @@ export default class TaskListScreen extends React.Component{
         <TaskList ref = 'taskList'/>
         
         <NavigationEvents 
-          onWillFocus={payload => {
+          onDidFocus={payload => {
             //updates list every time when user switches to this screen
             this.refs.taskList.retrieveTasks()
           }}

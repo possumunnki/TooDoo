@@ -1,5 +1,5 @@
 import React from 'react'
-import {StyleSheet, Text, View, FlatList, Button, AsyncStorage} from 'react-native'
+import {StyleSheet, Text, View, FlatList, Button, AsyncStorage, Alert} from 'react-native'
 import TaskListCell from './TaskListCell'
 
 export default class TaskList extends React.Component{
@@ -12,17 +12,30 @@ export default class TaskList extends React.Component{
 
   retrieveTasks() {
     this.data = []
-
+    //TÄSSÄ ON JOTAIN HÄIKKÄÄ, PÄIVITTÄMINEN EI ONNISU TOIVOTULLA TAVALLA
     AsyncStorage.getAllKeys()
     .then(keys => {
-      keys.map(key => {
-        AsyncStorage.getItem(key).then((value) => {
-          this.data.push({
-            'key': key,
-            'item' : JSON.parse(value)
+      //whenever there are not any data on storage
+      if(keys.length == 0) {
+        this.data.push({
+          'key': '0', 
+          'item': {
+            'title':'task not found',
+            'deadLine': ''
+            }
+        })
+      } else {
+        //otherwise adds datas on array
+        keys.map(key => {
+          AsyncStorage.getItem(key).then((value) => {
+            this.data.push({
+              'key': key,
+              'item' : JSON.parse(value)
+            })
           })
         })
-      })
+      }
+
       this.setState({data : this.data})
     })
     console.log('list refreshed')
@@ -30,16 +43,33 @@ export default class TaskList extends React.Component{
 
   render() {
     return(
-      <View style = {styles.containre}>
+      <View style = {styles.container}>
         <FlatList
           style = {styles.taskContainer}
           data = {this.state.data}
           renderItem = {({item, index}) => 
             <TaskListCell
-              scoreData = {item.item}
+              taskData = {item.item}
             />
           }
           keyExtractor={item => item.key}
+        />
+        <Button 
+          title = 'clear'
+          color = 'black'
+          onPress = {() => {
+            Alert.alert(
+              'Clear Storage',
+              'Are you sure?',
+              [
+                {text: 'NO'},
+                {text: 'YES', onPress: () => {
+                  AsyncStorage.clear()
+                  this.retrieveTasks()
+                }}
+              ]
+            )
+          }}
         />
       </View>
     )

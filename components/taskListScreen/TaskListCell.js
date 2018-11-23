@@ -8,25 +8,24 @@ export default class TaskListCell extends React.Component{
   }
 
   render() {
-    const {scoreData} = this.props
+    const {taskData} = this.props
     return(
       /*
       NONIIN, TERVETULOA TAKAISIN, NYT TILANNE ON NIIN, ETTÄ SUN PITÄS
       1. PARANTAA STORAGE DATA(lisäile kaikki oleelliset tiedot taskDataan)
       2. JOS EHIT, NIIN TEE UTILITYLLE DATAN HAKU FUNKTIO
-      3. JOSTAIN SYYSTÄ TITLE JA DATE EI NÄY YHTÄAIKAA
       4. MUISTA MUUTTAA SCOREDATA TOISEKSI NIMIKSI
       */
       <View style = {styles.container}>
-        <Text style = {styles.title}>{scoreData.title}</Text>
-        <Text sytle = {styles.startData}>DL: {scoreData.deadLine}</Text>
+        <Text style = {styles.title}>{taskData.title}</Text>
+        <Text sytle = {styles.startData}>DL: {taskData.deadLine}</Text>
       </View>
     )
   }
 }
 
 TaskListCell.propTypes = {
-    scoreData: PropTypes.object.isRequired
+    taskData: PropTypes.object.isRequired
 }
 
 const styles = StyleSheet.create({
