@@ -3,6 +3,5 @@ export default class TaskData {
       this.title = title
       this.startDate = startDate
       this.deadLine = deadLine
-      console.log('TaskData')
   }
 }

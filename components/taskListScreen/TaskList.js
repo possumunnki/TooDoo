@@ -8,12 +8,6 @@ export default class TaskList extends React.Component{
     this.data = []
     this.retrieveTasks = this.retrieveTasks.bind(this)
     this.state = {data: this.data}
-    
-  }
-
-  componentDidMount() {
-    this.retrieveTasks()
-
   }
 
   retrieveTasks() {
@@ -23,25 +17,22 @@ export default class TaskList extends React.Component{
     .then(keys => {
       keys.map(key => {
         AsyncStorage.getItem(key).then((value) => {
-          console.log('Key amount: ' + keys.length)
-          console.log('Key: ' + key + ', item: ' + value)
           this.data.push({
             'key': key,
             'item' : JSON.parse(value)
           })
         })
       })
-      console.log("TaskStorage, retrieveTasks()", this.data)
       this.setState({data : this.data})
     })
+    console.log('list refreshed')
   }
-
 
   render() {
     return(
-      <View>
+      <View style = {styles.containre}>
         <FlatList
-          style = {styles.scoreContainer}
+          style = {styles.taskContainer}
           data = {this.state.data}
           renderItem = {({item, index}) => 
             <TaskListCell
@@ -49,12 +40,6 @@ export default class TaskList extends React.Component{
             />
           }
           keyExtractor={item => item.key}
-        />
-        <Button 
-          title = 'reflesh'
-          onPress = {() => {
-            this.retrieveTasks()
-          }}
         />
       </View>
     )
@@ -64,7 +49,9 @@ export default class TaskList extends React.Component{
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  taskContainer: {
     backgroundColor: 'powderblue',
-
+    borderWidth: 3
   }
 })

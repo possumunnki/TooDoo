@@ -1,6 +1,6 @@
 import React from 'react';
 import Icon from "react-native-vector-icons/FontAwesome"
-import {createBottomTabNavigator,createAppContainer } from 'react-navigation'
+import {createBottomTabNavigator,createAppContainer} from 'react-navigation'
 import CalendarScreen from './components/calendarScreen/CalendarScreen.js'
 import TaskListScreen from './components/taskListScreen/TaskListScreen.js'
 import AddTaskScreen from './components/addTaskScreen/AddTaskScreen.js'

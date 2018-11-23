@@ -1,6 +1,7 @@
 import React from 'react'
 import {StyleSheet, View} from 'react-native'
-import { Constants } from 'expo'
+import {NavigationEvents} from 'react-navigation'
+import {Constants} from 'expo'
 import TaskList from './TaskList'
 
 export default class TaskListScreen extends React.Component{
@@ -11,8 +12,14 @@ export default class TaskListScreen extends React.Component{
   render() {
     return(
       <View style = {styles.container}>
-        <TaskList/>
+        <TaskList ref = 'taskList'/>
         
+        <NavigationEvents 
+          onWillFocus={payload => {
+            //updates list every time when user switches to this screen
+            this.refs.taskList.retrieveTasks()
+          }}
+        />
       </View> 
     )
   }
@@ -21,7 +28,6 @@ export default class TaskListScreen extends React.Component{
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
     justifyContent: 'center',
     paddingTop: Constants.statusBarHeight,
   }

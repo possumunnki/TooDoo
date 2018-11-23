@@ -9,13 +9,17 @@ export default class TaskListCell extends React.Component{
 
   render() {
     const {scoreData} = this.props
-    console.log('scoreData.startData: ', scoreData.startData)
     return(
-      /**/
+      /*
+      NONIIN, TERVETULOA TAKAISIN, NYT TILANNE ON NIIN, ETTÄ SUN PITÄS
+      1. PARANTAA STORAGE DATA(lisäile kaikki oleelliset tiedot taskDataan)
+      2. JOS EHIT, NIIN TEE UTILITYLLE DATAN HAKU FUNKTIO
+      3. JOSTAIN SYYSTÄ TITLE JA DATE EI NÄY YHTÄAIKAA
+      4. MUISTA MUUTTAA SCOREDATA TOISEKSI NIMIKSI
+      */
       <View style = {styles.container}>
         <Text style = {styles.title}>{scoreData.title}</Text>
-        <Text >{scoreData.startData}</Text>
-        <Text>{scoreData.endData}</Text>
+        <Text sytle = {styles.startData}>DL: {scoreData.deadLine}</Text>
       </View>
     )
   }
