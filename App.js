@@ -1,9 +1,16 @@
 import React from 'react';
 import Icon from "react-native-vector-icons/FontAwesome"
-import {createBottomTabNavigator,createAppContainer} from 'react-navigation'
+import {createBottomTabNavigator, createStackNavigator, createAppContainer} from 'react-navigation'
 import CalendarScreen from './components/calendarScreen/CalendarScreen.js'
 import TaskListScreen from './components/taskListScreen/TaskListScreen.js'
 import AddTaskScreen from './components/addTaskScreen/AddTaskScreen.js'
+import AddButton from './components/addButton/AddButton.js'
+import TaskDetailScreen from './components/taskListScreen/TaskDetailScreen.js'
+
+const TaskStack = createStackNavigator({
+  TasksList: {screen: TaskListScreen},
+  TaskDetail: {screen: TaskDetailScreen}
+})
 
 const TabNavigator = createBottomTabNavigator({
   Calendar: {
@@ -19,7 +26,7 @@ const TabNavigator = createBottomTabNavigator({
   })
   },
   Tasks: {
-    screen:  TaskListScreen,
+    screen:  TaskStack,
     navigationOptions: () => ({
       tabBarIcon: ({tintColor}) => (
         <Icon
@@ -29,6 +36,12 @@ const TabNavigator = createBottomTabNavigator({
         />
       )
   })
+  },
+  Adding: {
+    screen: () => null,
+    navigationOptions: () => ({
+      tabBarIcon: <AddButton/>
+    })
   },
   Add: {
     screen: AddTaskScreen,

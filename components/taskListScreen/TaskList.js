@@ -50,6 +50,9 @@ export default class TaskList extends React.Component{
           renderItem = {({item, index}) => 
             <TaskListCell
               taskData = {item.item}
+              taskClicked = {() => {
+                this.props.navigation.navigate('TaskDetail', {taskData: item})
+              }}
             />
           }
           keyExtractor={item => item.key}
