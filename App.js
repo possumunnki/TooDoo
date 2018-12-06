@@ -1,21 +1,60 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import Icon from "react-native-vector-icons/FontAwesome"
+import {createBottomTabNavigator, createStackNavigator, createAppContainer} from 'react-navigation'
+import CalendarScreen from './components/calendarScreen/CalendarScreen.js'
+import TaskListScreen from './components/taskListScreen/TaskListScreen.js'
+import AddTaskScreen from './components/addTaskScreen/AddTaskScreen.js'
+import AddButton from './components/addButton/AddButton.js'
+import TaskDetailScreen from './components/taskListScreen/TaskDetailScreen.js'
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-      </View>
-    );
-  }
-}
+const TaskStack = createStackNavigator({
+  TasksList: {screen: TaskListScreen},
+  TaskDetail: {screen: TaskDetailScreen}
+})
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+const TabNavigator = createBottomTabNavigator({
+  Calendar: {
+    screen: CalendarScreen,
+    navigationOptions: () => ({
+      tabBarIcon: ({tintColor}) => (
+        <Icon
+          name="calendar"
+          color={tintColor}
+          size={25}
+        />
+      )
+  })
   },
+  Tasks: {
+    screen:  TaskStack,
+    navigationOptions: () => ({
+      tabBarIcon: ({tintColor}) => (
+        <Icon
+          name="list"
+          color={tintColor}
+          size={25}
+        />
+      )
+  })
+  },
+  Adding: {
+    screen: () => null,
+    navigationOptions: () => ({
+      tabBarIcon: <AddButton/>
+    })
+  },
+  Add: {
+    screen: AddTaskScreen,
+    navigationOptions: () => ({
+      tabBarIcon:({tintColor}) => (
+        <Icon
+          name="plus"
+          color={tintColor}
+          size={25}
+        />
+      )
+    })
+  }
 });
+
+export default createAppContainer(TabNavigator);
