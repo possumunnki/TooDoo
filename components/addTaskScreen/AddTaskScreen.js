@@ -1,11 +1,14 @@
 import React from 'react'
 import { Constants } from 'expo'
-import {StyleSheet, Text, View, TextInput} from 'react-native'
+import {StyleSheet, Text, View, TextInput, TouchableOpacity} from 'react-native'
 import DatePicker from 'react-native-datepicker'
 import CreateButton from './CreateButon.js'
 import {getToday} from '../utility/DateTime'
 import {storeTask} from '../utility/TaskStorage'
 import TaskData from '../utility/TaskData.js'
+import DateTimePicker from 'react-native-modal-datetime-picker';
+import moment from 'moment'
+
 
 export default class AddTaskScreen extends React.Component{
   constructor(props) {
@@ -15,7 +18,8 @@ export default class AddTaskScreen extends React.Component{
     this.state = {
       startDate : this.today,
       endDate: this.today,
-      taskTitle: ''}
+      taskTitle: '',
+    }
   }
 
   createTask() {
@@ -89,11 +93,7 @@ export default class AddTaskScreen extends React.Component{
             onDateChange={(date) => {this.setState({endDate: date})}}
           />
         </View>
-        <CreateButton
-          clicked = {() => {
-            this.createTask()
-          }}
-        />
+        <CreateButton title = 'Add Task' clicked = {this.createTask}/>
       </View>
     )
   }

@@ -8,7 +8,7 @@ export default class CreateButton extends React.Component{
   }
 
   render() {
-    const {clicked} = this.props
+    const {clicked, title} = this.props
 
     return(
       <TouchableOpacity style={styles.button}
@@ -16,13 +16,14 @@ export default class CreateButton extends React.Component{
           clicked()
         }}
         >
-      <Text style={styles.text}>Add Task</Text>
+      <Text style={styles.text}>{title}</Text>
       </TouchableOpacity>
     )
   }
 }
 
 CreateButton.propTypes = {
+  title: PropTypes.string.isRequired,
   clicked: PropTypes.func.isRequired
 }
 

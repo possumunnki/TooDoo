@@ -12,7 +12,7 @@ export default class TaskList extends React.Component{
 
   retrieveTasks() {
     this.data = []
-    //TÄSSÄ ON JOTAIN HÄIKKÄÄ, PÄIVITTÄMINEN EI ONNISU TOIVOTULLA TAVALLA
+    
     AsyncStorage.getAllKeys()
     .then(keys => {
       //whenever there are not any data on storage

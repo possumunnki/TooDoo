@@ -64,7 +64,7 @@ export default class AddButton extends React.Component{
               }}>
                   <TouchableHighlight
                       onPress={() => {
-                        navigate('taskList')
+                        navigate('TaskList')
                       }}
                       style={{
                           alignItems: 'center',
@@ -86,6 +86,8 @@ export default class AddButton extends React.Component{
               }}>
                   <TouchableHighlight
                       onPress={() => {
+                        navigate('AddTask')
+                        console.log('Pressed!!!!')
                       }}
                       style={{
                           position: 'absolute',

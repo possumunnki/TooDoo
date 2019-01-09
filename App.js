@@ -9,7 +9,8 @@ import TaskDetailScreen from './components/taskListScreen/TaskDetailScreen.js'
 
 const TaskStack = createStackNavigator({
   TasksList: {screen: TaskListScreen},
-  TaskDetail: {screen: TaskDetailScreen}
+  TaskDetail: {screen: TaskDetailScreen},
+  AddTask: {screen: AddTaskScreen}
 })
 
 const TabNavigator = createBottomTabNavigator({
@@ -36,12 +37,6 @@ const TabNavigator = createBottomTabNavigator({
         />
       )
   })
-  },
-  Adding: {
-    screen: () => null,
-    navigationOptions: () => ({
-      tabBarIcon: <AddButton/>
-    })
   },
   Add: {
     screen: AddTaskScreen,

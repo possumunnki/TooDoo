@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "TooDoo",
-    "description": "This project is really great.",
+    "description": "TooDoo is a task management application.",
     "slug": "TooDoo",
     "privacy": "public",
     "sdkVersion": "31.0.0",
@@ -12,7 +12,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#000000"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -21,7 +21,10 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "bundleIdentifier": "fi.tamk.toodoo"
+    },
+    "android": {
+      "package": "fi.tamk.toodoo"
     }
   }
 }

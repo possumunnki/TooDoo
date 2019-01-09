@@ -13,17 +13,6 @@ export default class TaskListScreen extends React.Component{
     super(props)
   }
 
-/**
- * NONIIN, TÄSSÄ ON SEURAAVAT HOMMAT:
- * 
- * 1. PARANTAA STORAGE DATA(lisäile kaikki oleelliset tiedot taskDataan)
- * 1.1 KEY OLKOOT PÄIVÄMÄÄRÄ, JONKA SISÄLLÄ ON LISTA TASKEISTA
- * 2. JOS EHIT, NIIN TEE UTILITYLLE DATAN HAKU FUNKTIO(vaatii async await)
- * 3. Tee taskille joku näkymä, jossa on oleelliset tiedot
- *    -listassa voisi olla title, DL
-*/
-
-
   render() {
     return(
       <View style = {styles.container}>
