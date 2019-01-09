@@ -38,7 +38,7 @@ export default class TaskCalendar extends React.Component{
               'key': key,
               'item' : JSON.parse(value)
             })
-            this.setState({data : this.data}, console.log("data: ", this.data))
+            this.setState({data : this.data})
           })
         })
       } 

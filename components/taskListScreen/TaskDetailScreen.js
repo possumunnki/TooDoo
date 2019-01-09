@@ -17,7 +17,7 @@ export default class TaskDetailScreen extends React.Component{
   render() {
     return(
       <View style = {styles.container}>
-        <Text>Hello Again, React Native</Text>
+        <Text>This isn't ready yet</Text>
       </View> 
     )
   }
